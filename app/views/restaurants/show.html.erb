@@ -1,2 +1,24 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="jumbotron jumbotron-fluid">
+<%# <%= link_to 'List a lost pet', new_pet_path, class: 'flex-row-reverse btn btn-light float-right mx-5' %>
+  <div class="container">
+    <h1 class="display-4"><%= @restaurant.name %></h1>
+  </div>
+</div>
+<div class="container">
+  <div class="restaurant-details list-unstyled border-bottom">
+    <li>Style of food: <%= @restaurant.category.capitalize %></li>
+    <li>Address: <%= @restaurant.address %></li>
+    <li class="mb-4">Contact: <%= @restaurant.phone_number %></li>
+  </div>
+  <div class="reviews mt-3">
+  <h3><%= @restaurant.name %>'s Reviews
+  <%= link_to 'Leave a Review', new_restaurant_review_path(@restaurant), class: 'btn btn-light'%>
+  </h3>
+    <ul class="list-unstyled">
+      <% @restaurant.reviews.each do |review| %>
+        <li class="mb-3 shadow-sm p-2"><%= review.content %></li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to 'Go Back', root_path, class: 'card-link pb-5' %>
+</div>

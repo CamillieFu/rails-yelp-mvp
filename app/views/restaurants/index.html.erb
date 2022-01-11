@@ -1,2 +1,21 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Super Eats</h1>
+    <%= link_to 'Add a New Restaurant', new_restaurant_path, class: 'flex-row-reverse btn btn-light float-right mx-5' %>
+    <p class="lead">Scope out restaurants near you.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <%  @restaurants.each do |restaurant|%>
+    <div class="card m-3 shadow-sm" style="width: 18rem;">
+      <img class="card-img-top" src="https://source.unsplash.com/collection/<%= [345703, 67395466, 622228, 2311719, 6780906, 4878233].sample %>/1000x500" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= restaurant.name  %></h5>
+        <p class="card-text"><%= restaurant.category.capitalize %></p>
+        <%= link_to 'Details', restaurant_path(restaurant.id), class: "card-link" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
